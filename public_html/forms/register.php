@@ -5,16 +5,17 @@ if(isset($_POST['new']) && $_POST['new']==1){
     $trn_date = date("Y-m-d H:i:s");
     $name =$_REQUEST['name'];
     $age = $_REQUEST['age'];
-    $submittedby = $_SESSION["username"];
     $ins_query="insert into new_record
-    (`trn_date`,`name`,`age`,`submittedby`)values
+    (`trn_date`,`name`,`age`)values
     ('$trn_date','$name','$age','$submittedby')";
     mysqli_query($con,$ins_query)
     or die(mysql_error());
     $status = "Registro exitoso!";
 }
 ?>
-<!DOCTYPE html>
+
+
+<!-- <!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
@@ -44,4 +45,4 @@ if(isset($_POST['new']) && $_POST['new']==1){
         </div>
     </div>
 </body>
-</html>
+</html> -->

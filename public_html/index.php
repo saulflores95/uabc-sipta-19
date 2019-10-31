@@ -1,3 +1,33 @@
+<?php
+require('./forms/db.php');
+$status = "";
+if(isset($_POST['new']) && $_POST['new']==1){
+    $trn_date = date("Y-m-d H:i:s");
+	$email =$_REQUEST['email'];
+	$name =$_REQUEST['name'];
+    $phone = $_REQUEST['phone'];
+	$address = $_REQUEST['address'];
+	$city = $_REQUEST['city'];
+    $country = $_REQUEST['country'];
+    $occupation = $_REQUEST['occupation'];
+    $profession = $_REQUEST['profession'];
+    $reason = $_REQUEST['reason'];
+    $relation = $_REQUEST['relation'];
+    $found_out = $_REQUEST['found_out'];
+    $institution = $_REQUEST['institution'];
+    $institution_address = $_REQUEST['institution_address'];
+    $constancy = $_REQUEST['constancy'];
+
+    $ins_query="insert into registro-usuarios-2019	
+    (`trn_date`,`name`,`age`)values
+    ('$trn_date','$name','$age')";
+    mysqli_query($con,$ins_query)
+    or die(mysql_error());
+    $status = "Registro exitoso!";
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="zxx" class="no-js">
 	<head>
@@ -798,8 +828,7 @@
 		<section>
 			<div class="container" style="margin-top: 120px; margin-bottom: 100px;">
 				<p class="programa">Registro</p>
-				<form method="POST" action="registro.php">
-		
+				<form method="post" action="">
 					<div class="form-group">
 						<label for="email">Dirección de correo electrónico</label>
 						<input name="email" type="email" class="form-control" id="email" placeholder="name@example.com">
