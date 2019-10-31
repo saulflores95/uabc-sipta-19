@@ -1,0 +1,13 @@
+
+RewriteEngine on
+
+# php -- BEGIN cPanel-generated handler, do not edit
+# This domain inherits the “PHP” package.
+# php -- END cPanel-generated handler, do not edit
+RewriteCond %{HTTP_HOST} ^sipta\.com\.mx$ [OR]
+RewriteCond %{HTTP_HOST} ^www\.sipta\.com\.mx$
+RewriteCond %{REQUEST_URI} !^/\.well-known/cpanel-dcv/[0-9a-zA-Z_-]+$
+RewriteCond %{REQUEST_URI} !^/\.well-known/pki-validation/(?:\ Ballot169)?
+RewriteCond %{REQUEST_URI} !^/\.well-known/pki-validation/[A-F0-9]{32}\.txt(?:\ Sectigo\ DCV)?$
+RewriteRule ^2018$ "http\:\/\/2018\.sipta\.com\.mx\/" [R=301,L]
+
