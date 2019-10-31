@@ -2,7 +2,6 @@
 require('./forms/db.php');
 $status = "";
 if(isset($_POST['new']) && $_POST['new']==1){
-    $trn_date = date("Y-m-d H:i:s");
 	$email =$_REQUEST['email'];
 	$name =$_REQUEST['name'];
     $phone = $_REQUEST['phone'];
@@ -19,8 +18,8 @@ if(isset($_POST['new']) && $_POST['new']==1){
     $constancy = $_REQUEST['constancy'];
 
     $ins_query="insert into registro-usuarios-2019	
-    (`trn_date`,`name`,`age`)values
-    ('$trn_date','$name','$age')";
+    (`email`,`name`,`phone`,`address`,`city`,`country`,`occupation`,`profession`,`reason`,`relation`,`found_out`,`institution`,`institution_address`,`constancy`)values
+    ('$email','$name','$phone','$address','$city','$country','$occupation','$profession','$reason','$relation','$found_out','$institution','$institution_address','$constancy')";
     mysqli_query($con,$ins_query)
     or die(mysql_error());
     $status = "Registro exitoso!";
