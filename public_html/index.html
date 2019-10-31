@@ -37,6 +37,7 @@
 		<link rel="stylesheet" href="css/bootstrap.css" />
 		<link rel="stylesheet" href="css/main.css" />
 		<link rel="stylesheet" href="css/style.css" />
+		<link rel="stylesheet" href="css/bootstrap-datepicker.min.css" />
 	</head>
 	<body>
 		<a name="cero" id="cero"></a>
@@ -79,9 +80,7 @@
 				</li>
 
 				<li style="margin-top: 0.8rem">
-					<a href="https://forms.gle/KoqWMaDhvwx8mFW8A" class="header__menu__opt" target="_blank"
-						>Registro</a
-					>
+					<a href="#seis" class="anchorLink header__menu__opt">Registro</a>
 				</li>
 
 				<li>
@@ -795,6 +794,86 @@
 		</section>
 
 		<!-- Start Contact Area -->
+		<a name="seis" id="seis"></a>
+		<section>
+			<div class="container" style="margin-top: 120px; margin-bottom: 100px;">
+				<p class="programa">Registro</p>
+				<form>
+		
+					<div class="form-group">
+						<label for="email">Dirección de correo electrónico</label>
+						<input name="email" type="email" class="form-control" id="email" placeholder="name@example.com">
+					</div>
+
+					<div class="form-group">
+						<label for="date">Fecha</label>
+						<input onkeydown="return false" name="date" data-provide="datepicker" class="form-control" id="date" placeholder="DD/MM/YYYY">
+					</div>
+
+					<div class="form-group">
+						<label for="name">Nombre completo</label>
+						<input name="name" type="text" class="form-control" id="name" placeholder="Your answer">
+					</div>
+
+					<div class="form-group">
+						<label for="phone">Telefono</label>
+						<input name="phone" type="text" class="form-control phone-format" id="phone" placeholder="(000) 000-0000">
+					</div>
+
+					<div class="form-group">
+						<label for="address">Domicilio</label>
+						<input name="address" type="text" class="form-control" id="address" placeholder="Your answer">
+					</div>
+
+					<div class="form-group">
+						<label for="city">Ciudad</label>
+						<input name="city" type="text" class="form-control" id="city" placeholder="Your answer">
+					</div>
+	
+					<div class="form-group">
+						<label for="country">Pais</label>
+						<input name="country" type="text" class="form-control" id="country" placeholder="Your answer">
+					</div>
+					
+					<div class="form-group">
+						<label for="ocupation">Ocupación</label>
+						<input name="ocupation" type="text" class="form-control" id="ocupation" placeholder="Your answer">
+					</div>
+
+					<div class="form-group">
+						<label for="profession">Profesión</label>
+						<input name="profession" type="text" class="form-control" id="profession" placeholder="Your answer">
+					</div>
+
+					<div class="form-group">
+						<label for="reason">Cuál sería su interés principal en asistir al Simposio</label>
+						<input name="reason" type="text" class="form-control" id="reason" placeholder="Your answer">
+					</div>
+
+					<div class="form-group">
+						<label for="relation">Cuál es su relación con el tema de Autismo</label>
+						<input name="relation" type="text" class="form-control" id="relation" placeholder="Your answer">
+					</div>
+
+					<div class="form-group">
+						<label for="found_out">Como se enteró de este evento</label>
+						<input name="found_out" type="text" class="form-control" id="found_out" placeholder="Your answer">
+					</div>
+
+					<div class="form-group">
+						<label for="institution">Institución/Escuela/Organización donde labora o pertenece</label>
+						<input name="institution" type="text" class="form-control" id="institution" placeholder="Your answer">
+					</div>
+
+					<div class="form-group">
+						<label for="institution_address">Domicilio de Institución/Escuela/Organización donde labora o pertenece</label>
+						<input name="institution_address" type="text" class="form-control" id="institution_address" placeholder="Your answer">
+					</div>
+		
+					<button type="submit" class="btn btn-primary">Submit</button>
+				</form>
+			</div>
+		</section>
 
 		<!-- Strat Footer Area -->
 		<footer class="section-gap">
@@ -834,12 +913,8 @@
 		<script src="js/jquery.nice-select.min.js"></script>
 		<script src="js/jquery.magnific-popup.min.js"></script>
 		<script src="js/main.js"></script>
+		<script src="js/bootstrap-datepicker.min.js"></script>
 
-		<script
-			src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"
-			type="text/javascript"
-			charset="utf-8"
-		></script>
 
 		<script type="txt/javascript">
 
@@ -871,6 +946,29 @@
 		<script type="text/javascript">
 			$(document).ready(function() {
 				anchor.init();
+
+				// Formato para telefono
+				$(".phone-format").keypress(function (e) {
+					if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+						return false;
+					}
+					var curchr = this.value.length;
+					var curval = $(this).val();
+					if (curchr == 3 && curval.indexOf("(") <= -1) {
+						$(this).val("(" + curval + ")" + "-");
+					} else if (curchr == 4 && curval.indexOf("(") > -1) {
+						$(this).val(curval + ")-");
+					} else if (curchr == 5 && curval.indexOf(")") > -1) {
+						$(this).val(curval + "-");
+					} else if (curchr == 9) {
+						$(this).val(curval + "-");
+						$(this).attr('maxlength', '14');
+					}
+				});
+
+				$("#date").datepicker({
+					format: "dd/mm/yyyy",
+				});
 			});
 
 			anchor = {
