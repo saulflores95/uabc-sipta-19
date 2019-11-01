@@ -798,7 +798,7 @@
 		<section>
 			<div class="container" style="margin-top: 120px; margin-bottom: 100px;">
 				<p class="programa">Registro</p>
-				<form name="form" method="post" action="./forms/register.php"> 
+				<form method="post" id="frmBox" action="./forms/register.php" onsubmit="return formSubmit();"> 
 					<div class="form-group">
 						<label for="email">Dirección de correo electrónico</label>
 						<input name="email" type="email" class="form-control" id="email" placeholder="name@example.com">
@@ -953,6 +953,20 @@
 				});
 
 			};
+		</script>
+		<script type="text/javascript">
+			function formSubmit() {
+				$ajax({
+					type: 'POST',
+					url: './forms/register.php',
+					data: $('#frmBox').serialize(),
+					success: function(response) {
+						$('#success').html(response)
+					} 
+				});
+				var form = document.getElementById('frmBox').reset();
+				return false;
+			}
 		</script>
 
 		<script type="text/javascript">
