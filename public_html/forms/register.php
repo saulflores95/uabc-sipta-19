@@ -1,7 +1,13 @@
 <?php
-	require('db.php');
+    //require('db.php');
+    $host = "65.99.205.123"; 
+    $user = "siptacom_saul";
+    $password = "Sipta2019";
+    $database = "siptacom_sipta_2019";
+
+    $conn = mysqli_connect ($host, $user, $password, $database);
 	$status = "";
-	if(!$con) {
+	if(!$conn) {
 		die("Could not connect: ".mysqli_connect_error());
 	} else {
 		$email =test_input($_POST['email']);
@@ -18,15 +24,13 @@
 		$institution = test_input($_POST['institution']);
 		$institution_address = test_input($_POST['institution_address']);
 		$constancy = "test";
-		$sql="INSERT INTO `registro-usuarios-2019`(`email`, `date`, `name`, `phone`, `address`, `city`, `country`, `occupation`, `profession`, `reason`, `relation`, `found_out`, `institution`, `institution_address`, `constancy`)VALUES('$email','$name','$phone','$address','$city','$country','$occupation','$profession','$reason','$relation','$found_out','$institution','$institution_address')";
-		if(mysqli_query($con,$sql)) {
+		$sql="INSERT INTO registro-usuarios-2019(email, date, name, phone, address, city, country, occupation, profession, reason, relation, found_out, institution, institution_address, constancy)VALUES('$email','$name','$phone','$address','$city','$country','$occupation','$profession','$reason','$relation','$found_out','$institution','$institution_address')";
+		if(mysqli_query($conn,$sql)) {
 			echo "Registro exitoso!";
-			$status = "Registro exitoso!";
 		} else {
 			echo "Registro fallido!";
-			$status = "Registro fallido!";
 		}
-		mysqli_close($con);
+		mysqli_close($conn);
 	}
 	function test_input($data) {
 		$data=trim($data);

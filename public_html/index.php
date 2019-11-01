@@ -798,8 +798,7 @@
 		<section>
 			<div class="container" style="margin-top: 120px; margin-bottom: 100px;">
 				<p class="programa">Registro</p>
-				<form method="post" id="frmBox" action="./forms/register.php" onsubmit="return formSubmit();"> 
-					<div class="form-group">
+				<form action="./forms/register.php" id="frmBox" method="post" onsubmit="return formSubmit();">					<div class="form-group">
 						<label for="email">Dirección de correo electrónico</label>
 						<input name="email" type="email" class="form-control" id="email" placeholder="name@example.com">
 					</div>
@@ -875,9 +874,9 @@
 						<label for="constancy">Requiere Constancis</label>
 						<select class="custom-select" name="constancy" id="constancy">
 							<option value="">Your answer</option>
-							<option value="1">Si</option>
-							<option value="2">No</option>
-							<option value="3">Otro</option>
+							<option value="Si">Si</option>
+							<option value="No">No</option>
+							<option value="Otro">Otro</option>
 						</select>
    					 	<div class="invalid-feedback">Example invalid custom select feedback</div>
   					</div>
@@ -954,9 +953,11 @@
 
 			};
 		</script>
+
 		<script type="text/javascript">
 			function formSubmit() {
-				$ajax({
+				console.log('formSumbit: ', $('#frmBox').serialize());
+				$.ajax({
 					type: 'POST',
 					url: './forms/register.php',
 					data: $('#frmBox').serialize(),
