@@ -883,7 +883,9 @@
 		
 					<button type="submit" name="save" class="btn btn-primary">Submit</button>
 				</form>
+				<div id=pcontainer></div>
 			</div>
+
 		</section>
 
 		<!-- Strat Footer Area -->
@@ -962,7 +964,7 @@
 					url: './forms/register.php',
 					data: $('#frmBox').serialize(),
 					success: function(response) {
-						alert(response)
+						$("#pcontainer").prepend($("</br></br><p style='color:red;'>" + response + "s</p>").fadeIn('fast'));
 						$('#success').html(response)
 					} 
 				});
