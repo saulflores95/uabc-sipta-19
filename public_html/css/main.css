@@ -23,6 +23,11 @@ textarea {
   resize: none;
 }
 
+.nice-select {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
 nav ul{
   overflow:hidden;
   list-style:none;

@@ -899,6 +899,17 @@ if(isset($_POST['new']) && $_POST['new']==1){
 						<label for="institution_address">Domicilio de Institución/Escuela/Organización donde labora o pertenece</label>
 						<input name="institution_address" type="text" class="form-control" id="institution_address" placeholder="Your answer">
 					</div>
+
+					<div class="form-group">
+						<label for="constancy">Requiere Constancis</label>
+						<select class="custom-select" name="constancy" id="constancy">
+							<option value="">Your answer</option>
+							<option value="1">Si</option>
+							<option value="2">No</option>
+							<option value="3">Otro</option>
+						</select>
+   					 	<div class="invalid-feedback">Example invalid custom select feedback</div>
+  					</div>
 		
 					<button type="submit" class="btn btn-primary">Submit</button>
 				</form>
