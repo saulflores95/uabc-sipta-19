@@ -23,8 +23,9 @@
 		$found_out = test_input($_POST['found_out']);
 		$institution = test_input($_POST['institution']);
 		$institution_address = test_input($_POST['institution_address']);
-		$constancy =  test_input($_POST['constancy']);
-        $sql = "INSERT INTO `registro-usuarios-2019` (`id`, `email`, `date`, `name`, `phone`, `address`, `city`, `country`, `occupation`, `profession`, `reason`, `relation`, `found_out`, `institution`, `institution_address`, `constancy`) VALUES (NULL, '$email', CURRENT_TIMESTAMP, '$name', '$phone', '$address', '$city', '$country', '$occupation', '$profession', '$reason', '$relation', '$found_out', '$institution', '$institution_address', '$constancy');";
+        $constancy =  test_input($_POST['constancy']);
+        $confirmation_id = generateRandomString();
+        $sql = "INSERT INTO `registro-usuarios-2019` (`id`, `email`, `date`, `name`, `phone`, `address`, `city`, `country`, `occupation`, `profession`, `reason`, `relation`, `found_out`, `institution`, `institution_address`, `constancy`,  `confirmation_id`) VALUES (NULL, '$email', CURRENT_TIMESTAMP, '$name', '$phone', '$address', '$city', '$country', '$occupation', '$profession', '$reason', '$relation', '$found_out', '$institution', '$institution_address', '$constancy', '$confirmation_id');";
 
         if(mysqli_query($conn,$sql)) {
 			echo "Registro exitoso!";
@@ -38,5 +39,16 @@
 		$data=stripslashes($data);
 		$data=htmlspecialchars($data);
 		return $data;
-	}
+    }
+
+    function generateRandomString($length = 5) {
+        $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $charactersLength = strlen($characters);
+        $randomString = '';
+        for ($i = 0; $i < $length; $i++) {
+            $randomString .= $characters[rand(0, $charactersLength - 1)];
+        }
+        return $randomString;
+    }
+
 ?>
