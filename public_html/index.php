@@ -1,32 +1,3 @@
-<?php
-require('./forms/db.php');
-$status = "";
-if(isset($_POST['new']) && $_POST['new']==1){
-	$email =$_REQUEST['email'];
-	$name =$_REQUEST['name'];
-    $phone = $_REQUEST['phone'];
-	$address = $_REQUEST['address'];
-	$city = $_REQUEST['city'];
-    $country = $_REQUEST['country'];
-    $occupation = $_REQUEST['occupation'];
-    $profession = $_REQUEST['profession'];
-    $reason = $_REQUEST['reason'];
-    $relation = $_REQUEST['relation'];
-    $found_out = $_REQUEST['found_out'];
-    $institution = $_REQUEST['institution'];
-    $institution_address = $_REQUEST['institution_address'];
-    $constancy = $_REQUEST['constancy'];
-
-    $ins_query="insert into registro-usuarios-2019	
-    (`email`,`name`,`phone`,`address`,`city`,`country`,`occupation`,`profession`,`reason`,`relation`,`found_out`,`institution`,`institution_address`,`constancy`)values
-    ('$email','$name','$phone','$address','$city','$country','$occupation','$profession','$reason','$relation','$found_out','$institution','$institution_address','$constancy')";
-    mysqli_query($con,$ins_query)
-    or die(mysql_error());
-    $status = "Registro exitoso!";
-}
-?>
-
-
 <!DOCTYPE html>
 <html lang="zxx" class="no-js">
 	<head>
@@ -827,7 +798,7 @@ if(isset($_POST['new']) && $_POST['new']==1){
 		<section>
 			<div class="container" style="margin-top: 120px; margin-bottom: 100px;">
 				<p class="programa">Registro</p>
-				<form method="post" action="">
+				<form name="form" method="post" action="./forms/register.php"> 
 					<div class="form-group">
 						<label for="email">Dirección de correo electrónico</label>
 						<input name="email" type="email" class="form-control" id="email" placeholder="name@example.com">
@@ -866,8 +837,8 @@ if(isset($_POST['new']) && $_POST['new']==1){
 					</div>
 					
 					<div class="form-group">
-						<label for="ocupation">Ocupación</label>
-						<input name="ocupation" type="text" class="form-control" id="ocupation" placeholder="Your answer">
+						<label for="occupation">Ocupación</label>
+						<input name="occupation" type="text" class="form-control" id="occupation" placeholder="Your answer">
 					</div>
 
 					<div class="form-group">
@@ -899,8 +870,8 @@ if(isset($_POST['new']) && $_POST['new']==1){
 						<label for="institution_address">Domicilio de Institución/Escuela/Organización donde labora o pertenece</label>
 						<input name="institution_address" type="text" class="form-control" id="institution_address" placeholder="Your answer">
 					</div>
-		
-					<button type="submit" class="btn btn-primary">Submit</button>
+
+					<button type="submit" name="save" class="btn btn-primary">Submit</button>
 				</form>
 			</div>
 		</section>

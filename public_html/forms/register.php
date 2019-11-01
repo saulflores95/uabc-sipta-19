@@ -1,48 +1,37 @@
 <?php
-require('db.php');
-$status = "";
-if(isset($_POST['new']) && $_POST['new']==1){
-    $trn_date = date("Y-m-d H:i:s");
-    $name =$_REQUEST['name'];
-    $age = $_REQUEST['age'];
-    $ins_query="insert into new_record
-    (`trn_date`,`name`,`age`)values
-    ('$trn_date','$name','$age','$submittedby')";
-    mysqli_query($con,$ins_query)
-    or die(mysql_error());
-    $status = "Registro exitoso!";
-}
+	require('db.php');
+	$status = "";
+	if(!$con) {
+		die("Could not connect: ".mysqli_connect_error());
+	} else {
+		$email =test_input($_POST['email']);
+		$name =test_input($_POST['name']);
+		$phone = test_input($_POST['phone']);
+		$address = test_input($_POST['address']);
+		$city = test_input($_POST['city']);
+		$country = test_input($_POST['country']);
+		$occupation = test_input($_POST['occupation']);
+		$profession = test_input($_POST['profession']);
+		$reason = test_input($_POST['reason']);
+		$relation = test_input($_POST['relation']);
+		$found_out = test_input($_POST['found_out']);
+		$institution = test_input($_POST['institution']);
+		$institution_address = test_input($_POST['institution_address']);
+		$constancy = "test";
+		$sql="INSERT INTO `registro-usuarios-2019`(`email`, `date`, `name`, `phone`, `address`, `city`, `country`, `occupation`, `profession`, `reason`, `relation`, `found_out`, `institution`, `institution_address`, `constancy`)VALUES('$email','$name','$phone','$address','$city','$country','$occupation','$profession','$reason','$relation','$found_out','$institution','$institution_address')";
+		if(mysqli_query($con,$sql)) {
+			echo "Registro exitoso!";
+			$status = "Registro exitoso!";
+		} else {
+			echo "Registro fallido!";
+			$status = "Registro fallido!";
+		}
+		mysqli_close($con);
+	}
+	function test_input($data) {
+		$data=trim($data);
+		$data=stripslashes($data);
+		$data=htmlspecialchars($data);
+		return $data;
+	}
 ?>
-
-
-<!-- <!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <title>Insert New Record</title>
-    <link rel="stylesheet" href="css/style.css" />
-</head>
-
-<body>
-    <div class="form">
-        <div>
-            <h1>Insert New Registration</h1>
-            <form name="form" method="post" action="">
-                <input type="hidden" name="new" value="1" />
-                <p>
-                    <input type="text" name="name" placeholder="Enter Name" required />
-                </p>
-                <p>
-                    <input type="text" name="age" placeholder="Enter Age" required />
-                </p>
-                <p>
-                    <input name="submit" type="submit" value="Submit" />
-                </p>
-            </form>
-            <p style="color:#FF0000;">
-                <?php echo $status; ?>
-            </p>
-        </div>
-    </div>
-</body>
-</html> -->
