@@ -23,7 +23,7 @@
 		$found_out = test_input($_POST['found_out']);
 		$institution = test_input($_POST['institution']);
 		$institution_address = test_input($_POST['institution_address']);
-		$constancy = "test";
+		$constancy = test_input($_POST['constancy']);
 		$sql="INSERT INTO registro-usuarios-2019(email, date, name, phone, address, city, country, occupation, profession, reason, relation, found_out, institution, institution_address, constancy)VALUES('$email','$name','$phone','$address','$city','$country','$occupation','$profession','$reason','$relation','$found_out','$institution','$institution_address')";
 		if(mysqli_query($conn,$sql)) {
 			echo "Registro exitoso!";
