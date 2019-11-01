@@ -28,7 +28,7 @@
         $sql = "INSERT INTO `registro-usuarios-2019` (`id`, `email`, `date`, `name`, `phone`, `address`, `city`, `country`, `occupation`, `profession`, `reason`, `relation`, `found_out`, `institution`, `institution_address`, `constancy`,  `confirmation_id`) VALUES (NULL, '$email', CURRENT_TIMESTAMP, '$name', '$phone', '$address', '$city', '$country', '$occupation', '$profession', '$reason', '$relation', '$found_out', '$institution', '$institution_address', '$constancy', '$confirmation_id');";
 
         if(mysqli_query($conn,$sql)) {
-			echo "Registro exitoso!";
+			echo "Registro exitoso! Codigo de confirmacion: $confirmation_id";
 		} else {
 			echo "Registro fallido!";
 		}

@@ -962,6 +962,7 @@
 					url: './forms/register.php',
 					data: $('#frmBox').serialize(),
 					success: function(response) {
+						alert(response)
 						$('#success').html(response)
 					} 
 				});
