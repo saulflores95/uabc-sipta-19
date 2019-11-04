@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="zxx" class="no-js">
 	<head>
@@ -43,7 +44,7 @@
 		<!-- Start Header Area -->
 		<header class="header__menu">
 			<div class="header__menu__logo">
-				<a class="logo_header" href="index.html"
+				<a class="logo_header" href="index.php"
 					><img class="header-logo" src="../img/sipta.png" alt="" />
 				</a>
 			</div>
@@ -78,12 +79,10 @@
 				</li>
 
 				<li style="margin-top: 0.8rem">
-					<a href="https://forms.gle/KoqWMaDhvwx8mFW8A" class="header__menu__opt" target="_blank"
-						>Register</a
-					>
+					<a href="#seis" class="anchorLink header__menu__opt">Register</a>
 				</li>
 				<li>
-					<a href="../index.html">
+					<a href="../index.php">
 						<img src="../img/spanish.png" alt="spanish-site" height="45px" width="auto">
 					</a>
 				</li>
@@ -746,6 +745,91 @@
 		</section>
 
 		<!-- Start Contact Area -->
+		<a name="seis" id="seis"></a>
+		<section>
+			<div class="container" style="margin-top: 120px; margin-bottom: 100px;">
+				<p class="programa">Registro</p>
+				<form action="./forms/register.php" id="frmBox" method="post" onsubmit="return formSubmit();">					<div class="form-group">
+						<label for="email">Email address</label>
+						<input name="email" type="email" class="form-control" id="email" placeholder="name@example.com">
+					</div>
+					<div class="form-group">
+						<label for="name">Full name</label>
+						<input name="name" type="text" class="form-control" id="name" placeholder="Your answer">
+					</div>
+
+					<div class="form-group">
+						<label for="phone">Phone number</label>
+						<input name="phone" type="text" class="form-control phone-format" id="phone" placeholder="(000) 000-0000">
+					</div>
+
+					<div class="form-group">
+						<label for="address">Address</label>
+						<input name="address" type="text" class="form-control" id="address" placeholder="Your answer">
+					</div>
+
+					<div class="form-group">
+						<label for="city">City</label>
+						<input name="city" type="text" class="form-control" id="city" placeholder="Your answer">
+					</div>
+	
+					<div class="form-group">
+						<label for="country">Country</label>
+						<input name="country" type="text" class="form-control" id="country" placeholder="Your answer">
+					</div>
+					
+					<div class="form-group">
+						<label for="occupation">Occupation</label>
+						<input name="occupation" type="text" class="form-control" id="occupation" placeholder="Your answer">
+					</div>
+
+					<div class="form-group">
+						<label for="profession">Profession</label>
+						<input name="profession" type="text" class="form-control" id="profession" placeholder="Your answer">
+					</div>
+
+					<div class="form-group">
+						<label for="reason">What would be your main interest in attending the Symposium</label>
+						<input name="reason" type="text" class="form-control" id="reason" placeholder="Your answer">
+					</div>
+
+					<div class="form-group">
+						<label for="relation">What is your relationship with the Autism issue</label>
+						<input name="relation" type="text" class="form-control" id="relation" placeholder="Your answer">
+					</div>
+
+					<div class="form-group">
+						<label for="found_out">How did you hear about this event</label>
+						<input name="found_out" type="text" class="form-control" id="found_out" placeholder="Your answer">
+					</div>
+
+					<div class="form-group">
+						<label for="institution">Institution / School / Organization where you work or belong</label>
+						<input name="institution" type="text" class="form-control" id="institution" placeholder="Your answer">
+					</div>
+
+					<div class="form-group">
+						<label for="institution_address">Address of Institution / School / Organization where you work or belong</label>
+						<input name="institution_address" type="text" class="form-control" id="institution_address" placeholder="Your answer">
+					</div>
+
+					<div class="form-group">
+						<label for="constancy">Requiere Constancis</label>
+						<select class="custom-select" name="constancy" id="constancy" style="width: 100%">
+							<option value="">Your answer</option>
+							<option value="Si">Si</option>
+							<option value="No">No</option>
+							<option value="Otro">Otro</option>
+						</select>
+   					 	<div class="invalid-feedback">Example invalid custom select feedback</div>
+  					</div>
+		
+					<button type="submit" name="save" class="btn btn-primary">Submit</button>
+				</form>
+				<div id=pcontainer></div>
+			</div>
+
+		</section>
 
 		<!-- Strat Footer Area -->
 		<footer class="section-gap">

@@ -45,7 +45,7 @@
 
 		<header class="header__menu">
 			<div class="header__menu__logo">
-				<a class="logo_header" href="index.html"
+				<a class="logo_header" href="index.php"
 					><img class="header-logo" src="img/sipta.png" alt="" />
 				</a>
 			</div>
@@ -84,7 +84,7 @@
 				</li>
 
 				<li>
-					<a href="en/index.html">
+					<a href="en/index.php">
 						<img src="./img/english.png" alt="english-site" height="45px" width="auto">
 					</a>
 				</li>
@@ -802,14 +802,6 @@
 						<label for="email">Dirección de correo electrónico</label>
 						<input name="email" type="email" class="form-control" id="email" placeholder="name@example.com">
 					</div>
-					
-					<!--
-						<div class="form-group">
-							<label for="date">Fecha</label>
-							<input onkeydown="return false" name="date" data-provide="datepicker" class="form-control" id="date" placeholder="DD/MM/YYYY">
-						</div>
-					-->
-
 					<div class="form-group">
 						<label for="name">Nombre completo</label>
 						<input name="name" type="text" class="form-control" id="name" placeholder="Your answer">
@@ -872,7 +864,7 @@
 
 					<div class="form-group">
 						<label for="constancy">Requiere Constancis</label>
-						<select class="custom-select" name="constancy" id="constancy">
+						<select class="custom-select" name="constancy" id="constancy" style="width: 100%">
 							<option value="">Your answer</option>
 							<option value="Si">Si</option>
 							<option value="No">No</option>
