@@ -749,7 +749,7 @@
 		<section>
 			<div class="container" style="margin-top: 120px; margin-bottom: 100px;">
 				<p class="programa">Registro</p>
-				<form action="./forms/register.php" id="frmBox" method="post" onsubmit="return formSubmit();">					<div class="form-group">
+				<form action="../forms/register.php" id="frmBox" method="post" onsubmit="return formSubmit();">					<div class="form-group">
 						<label for="email">Email address</label>
 						<input name="email" type="email" class="form-control" id="email" placeholder="name@example.com">
 					</div>
@@ -875,6 +875,23 @@
 			type="text/javascript"
 			charset="utf-8"
 		></script>
+
+		<script type="text/javascript">
+			function formSubmit() {
+				console.log('formSumbit: ', $('#frmBox').serialize());
+				$.ajax({
+					type: 'POST',
+					url: '../forms/register.php',
+					data: $('#frmBox').serialize(),
+					success: function(response) {
+						$("#pcontainer").prepend($("</br></br><p style='color:red;'>" + response + "s</p>").fadeIn('fast'));
+						$('#success').html(response)
+					} 
+				});
+				var form = document.getElementById('frmBox').reset();
+				return false;
+			}
+		</script>
 
 		<script type="txt/javascript">
 
