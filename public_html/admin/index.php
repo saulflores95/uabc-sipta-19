@@ -163,7 +163,7 @@
 			function formSubmit(id, assistance) {
 				$.ajax({
 					type: 'POST',
-					url: './forms/assistance.php',
+					url: '../forms/assistance.php',
 					data: {id: id, assistance:assistance},
 					success: function(response) {
 						$("#pcontainer").prepend($("</br></br><p style='color:red;'>" + response + "s</p>").fadeIn('fast'));
