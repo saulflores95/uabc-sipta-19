@@ -20,3 +20,8 @@ select {
   -moz-appearance: none;
   appearance: none;
 }
+
+#tableId > tbody > tr td {
+    color: #212529;
+    font-weight: 400;
+}

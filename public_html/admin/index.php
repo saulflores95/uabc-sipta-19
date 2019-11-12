@@ -84,7 +84,7 @@
 		
 		<section class="admin-section">
 			<div class="container">
-				<table id="dtBasicExample" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
+				<table id="tableId" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
 				<thead class="black white-text">
 					<tr>
 						<th class="th-sm">Nombre</th>
@@ -113,7 +113,7 @@
 								while ($row = mysqli_fetch_assoc($result)) {
 									echo "<tr><td>" . $row["name"]. "</td><td>" 
 										. $row["email"] . "</td><td class='text-center'>" 
-										. $row["constancy"] . "</td><td>" 
+										. $row["constancy"] . "</td><td class='text-center'>" 
 										. $row["confirmation_id"] 
 										. "</td><td class='td-checkbox'><input type='checkbox' name='assistance' id='assistance'" . ($row["assistance"] == 1 ? 'checked' : '') . "></td></tr>";
 								}
@@ -168,7 +168,7 @@
 
 		<script type="text/javascript">
 			$(document).ready(function () {
-				$('#dtBasicExample').DataTable();
+				$('#tableId').DataTable();
 				$('.dataTables_length').addClass('bs-select');
 			});
 		</script>
