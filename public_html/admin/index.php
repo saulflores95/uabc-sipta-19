@@ -26,6 +26,9 @@
 			href="https://fonts.googleapis.com/css?family=Poppins:100,400,300,500,600"
 			rel="stylesheet"
 		/>
+
+		<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet">
+
 		<!--
 		CSS
 		============================================= -->
@@ -38,6 +41,9 @@
 		<link rel="stylesheet" href="../css/main.css" />
 		<link rel="stylesheet" href="../css/style.css" />
 		<link rel="stylesheet" href="../css/custom.css" />
+		<link rel="stylesheet" href="../css/mdb.min.css" />
+		<link rel="stylesheet" href="../css/all.css" />
+		<link rel="stylesheet" href="../css/datatables.min.css" />
 		<link rel="stylesheet" href="../css/bootstrap-datepicker.min.css" />
 	</head>
 	<body>
@@ -77,48 +83,50 @@
 		</header>
 		
 		<section class="admin-section">
-		<div class="container">
-		<table class="table table-striped">
-			<thead class="thead-dark">
-				<tr>
-				<th>Nombre</th>
-				<th>Correo</th>
-				<th>Constancia</th>
-				<th>Asistencia</th>
-				<th></th>
-				</tr>
-			</thead>
-		<?php
-			//require('db.php');
-			$host = "65.99.205.123"; 
-			$user = "siptacom_saul";
-			$password = "Sipta2019";
-			$database = "siptacom_sipta_2019";
+			<div class="container">
+				<table id="dtBasicExample" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
+				<thead class="black white-text">
+					<tr>
+						<th class="th-sm">Nombre</th>
+						<th class="th-sm">Correo</th>
+						<th class="th-sm">Constancia</th>
+						<th class="th-sm">Codigo </th>
+						<th class="th-sm">Asistencia</th>
+					</tr>
+				</thead>
+				<tbody>
+				<?php
+						$host = "65.99.205.123"; 
+						$user = "siptacom_saul";
+						$password = "Sipta2019";
+						$database = "siptacom_sipta_2019";
 
-			$conn = mysqli_connect ($host, $user, $password, $database);
-			$status = "";
-			if(!$conn) {
-				die("Could not connect: ".mysqli_connect_error());
-			} else {
+						$conn = mysqli_connect ($host, $user, $password, $database);
+						$status = "";
+						if(!$conn) {
+							die("Could not connect: ".mysqli_connect_error());
+						} else {
 
-				$sql = "SELECT `*` FROM `registro-usuarios-2019`";
-				
-				if($result = mysqli_query($conn,$sql)) {
-					while ($row = mysqli_fetch_assoc($result)) {
-						echo "<tr><td>" . $row["name"]. "</td><td>" . $row["address"] . "</td><td>" . $row["constancy"] . "</td><td class='td-checkbox'><input type='checkbox' class='' /></td></tr>";
-					}
-					echo "</table>";
-					mysqli_free_result($result);
-				} else {
-					echo "Registro!";
-				}
-				mysqli_close($conn);
-			}
-			
-		?>
-			
-		</div>
-
+							$sql = "SELECT `*` FROM `registro-usuarios-2019`";
+							
+							if($result = mysqli_query($conn,$sql)) {
+								while ($row = mysqli_fetch_assoc($result)) {
+									echo "<tr><td>" . $row["name"]. "</td><td>" 
+										. $row["email"] . "</td><td class='text-center'>" 
+										. $row["constancy"] . "</td><td>" 
+										. $row["confirmation_id"] 
+										. "</td><td class='td-checkbox'><input type='checkbox' name='assistance' id='assistance'" . ($row["assistance"] == 1 ? 'checked' : '') . "></td></tr>";
+								}
+								echo "</tbody></table>";
+								mysqli_free_result($result);
+							} else {
+								echo "Registro!";
+							}
+							mysqli_close($conn);
+						}
+					?>
+					
+			</div>
 		</section>
 
 	
@@ -136,15 +144,10 @@
 		<script src="../js/jquery.nice-select.min.js"></script>
 		<script src="../js/jquery.magnific-popup.min.js"></script>
 		<script src="../js/main.js"></script>
+		<script src="../js/popper.min.js"></script>
+		<script src="../js/mdb.min.js"></script>
+		<script src="../js/datatables.min.js"></script>
 		<script src="../js/bootstrap-datepicker.min.js"></script>
-
-
-		<script type="text/javascript">
-
-            $( document ).ready(function() {
-            
-            });
-		</script>
 
 		<script type="text/javascript">
 			function formSubmit() {
@@ -164,43 +167,10 @@
 		</script>
 
 		<script type="text/javascript">
-			$(document).ready(function() {
-				anchor.init();
-
-				// Formato para telefono
-				$(".phone-format").keypress(function (e) {
-					if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
-						return false;
-					}
-					var curchr = this.value.length;
-					var curval = $(this).val();
-					if (curchr == 3 && curval.indexOf("(") <= -1) {
-						$(this).val("(" + curval + ")" + "-");
-					} else if (curchr == 4 && curval.indexOf("(") > -1) {
-						$(this).val(curval + ")-");
-					} else if (curchr == 5 && curval.indexOf(")") > -1) {
-						$(this).val(curval + "-");
-					} else if (curchr == 9) {
-						$(this).val(curval + "-");
-						$(this).attr('maxlength', '14');
-					}
-				});
-
-				$("#date").datepicker({
-					format: "dd/mm/yyyy",
-				});
+			$(document).ready(function () {
+				$('#dtBasicExample').DataTable();
+				$('.dataTables_length').addClass('bs-select');
 			});
-
-			anchor = {
-				init: function() {
-					$('a.anchorLink').click(function() {
-						elementClick = $(this).attr('href');
-						destination = $(elementClick).offset().top;
-						$('html:not(:animated),body:not(:animated)').animate({ scrollTop: destination }, 1100);
-						return false;
-					});
-				}
-			};
 		</script>
 	</body>
 </html>
