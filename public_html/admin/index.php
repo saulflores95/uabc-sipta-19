@@ -115,7 +115,7 @@
 										. $row["email"] . "</td><td class='text-center'>" 
 										. $row["constancy"] . "</td><td class='text-center'>" 
 										. $row["confirmation_id"] 
-										. "</td><td class='td-checkbox'><input type='checkbox' name='assistance' id='assistance'" . ($row["assistance"] == 1 ? 'checked' : '') . "></td></tr>";
+										. "</td><td class='td-checkbox'><input type='checkbox' onclick='onSelected(" . $row["id"] . ", ". $row["assistance"]. ")' name='assistance' id='assistance'" . ($row["assistance"] == 1 ? 'checked' : '') . "></td></tr>";
 								}
 								echo "</tbody></table>";
 								mysqli_free_result($result);
@@ -149,19 +149,27 @@
 		<script src="../js/datatables.min.js"></script>
 		<script src="../js/bootstrap-datepicker.min.js"></script>
 
+
 		<script type="text/javascript">
-			function formSubmit() {
-				console.log('formSumbit: ', $('#frmBox').serialize());
+			function onSelected(id, assistance) {
+				if (assistance) {
+					assistance = 0
+				} else {
+					assistance = 1
+				}
+				formSubmit(id, assistance)
+			}
+
+			function formSubmit(id, assistance) {
 				$.ajax({
 					type: 'POST',
-					url: './forms/register.php',
-					data: $('#frmBox').serialize(),
+					url: './forms/assistance.php',
+					data: {id: id, assistance:assistance},
 					success: function(response) {
 						$("#pcontainer").prepend($("</br></br><p style='color:red;'>" + response + "s</p>").fadeIn('fast'));
 						$('#success').html(response)
 					} 
 				});
-				var form = document.getElementById('frmBox').reset();
 				return false;
 			}
 		</script>
