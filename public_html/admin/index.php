@@ -37,12 +37,12 @@
 		<link rel="stylesheet" href="../css/bootstrap.css" />
 		<link rel="stylesheet" href="../css/main.css" />
 		<link rel="stylesheet" href="../css/style.css" />
+		<link rel="stylesheet" href="../css/custom.css" />
 		<link rel="stylesheet" href="../css/bootstrap-datepicker.min.css" />
 	</head>
 	<body>
 		<a name="cero" id="cero"></a>
 		<!-- Start Header Area -->
-
 		<header class="header__menu">
 			<div class="header__menu__logo">
 				<a class="logo_header" href="index.php"
@@ -76,33 +76,52 @@
 			</ul>
 		</header>
 		
-		<section class="">
+		<section class="admin-section">
+		<div class="container">
+		<table class="table table-striped">
+			<thead class="thead-dark">
+				<tr>
+				<th>Nombre</th>
+				<th>Correo</th>
+				<th>Constancia</th>
+				<th>Asistencia</th>
+				<th></th>
+				</tr>
+			</thead>
+		<?php
+			//require('db.php');
+			$host = "65.99.205.123"; 
+			$user = "siptacom_saul";
+			$password = "Sipta2019";
+			$database = "siptacom_sipta_2019";
+
+			$conn = mysqli_connect ($host, $user, $password, $database);
+			$status = "";
+			if(!$conn) {
+				die("Could not connect: ".mysqli_connect_error());
+			} else {
+
+				$sql = "SELECT `*` FROM `registro-usuarios-2019`";
+				
+				if($result = mysqli_query($conn,$sql)) {
+					while ($row = mysqli_fetch_assoc($result)) {
+						echo "<tr><td>" . $row["name"]. "</td><td>" . $row["address"] . "</td><td>" . $row["constancy"] . "</td><td class='td-checkbox'><input type='checkbox' class='' /></td></tr>";
+					}
+					echo "</table>";
+					mysqli_free_result($result);
+				} else {
+					echo "Registro!";
+				}
+				mysqli_close($conn);
+			}
 			
+		?>
+			
+		</div>
+
 		</section>
 
-		<footer class="section-gap">
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-3 col-sm-6">
-						<img class="logo2" src="../img/alumbra.png" alt="" />
-						<img class="logo2" src="../img/uabc.png" />
-						<img class="logo2" src="../img/hsm.png" />
-					</div>
-				</div>
-				<div
-					class="footer-bottom d-flex justify-content-between align-items-center flex-wrap"
-				>
-					<p class="footer-text m-0">
-						&copy; 2019 todos los derechos reservados. Por: 
-						<a href="https://www.linkedin.com/in/omar-osuna/" target="_blank" style="color: white; font-weight: bold;">Omar Alonso Osuna Angulo</a>
-					</p>
-						<div class="footer-social d-flex align-items-center">
-						<a href="#"><i class="fa fa-facebook"></i></a>
-						<a href="#"><i class="fa fa-twitter"></i></a>
-					</div>
-				</div>
-			</div>
-		</footer>
+	
 		<!-- End Footer Area -->
 
 		<script src="../js/vendor/jquery-2.2.4.min.js"></script>
@@ -123,15 +142,7 @@
 		<script type="text/javascript">
 
             $( document ).ready(function() {
-                console.log( "ready!" );
-                $.ajax({
-					type: 'POST',
-					url: '../forms/getUsers.php',
-					data: '',
-					success: function(response) {
-						console.log(response)
-					} 
-				});
+            
             });
 		</script>
 

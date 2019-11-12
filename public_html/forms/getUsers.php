@@ -15,8 +15,9 @@
         
         if($result = mysqli_query($conn,$sql)) {
             while ($row = mysqli_fetch_assoc($result)) {
-                printf ("%s (%s)\n", $row["name"], $row["id"]);
+                echo "<tr><td>" . $row["name"]. "</td><td>" . $row["address"] . "</td><td>". $row["city "]. "</td></tr>";
             }
+            echo "</table>";
             mysqli_free_result($result);
 		} else {
 			echo "Registro!";
